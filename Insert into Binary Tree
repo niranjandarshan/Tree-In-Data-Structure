@@ -1,0 +1,37 @@
+class Node:
+    def __init__(self,data):
+        self.left=None
+        self.right=None
+        self.data=data
+    def insertintotree(self,data):
+        if data<self.data:
+            if self.left is None:
+                self.left=Node(data)
+            else:
+                self.left.insertintotree(data)
+        elif data>self.data:
+            if self.right is None:
+                self.right=Node(data)
+            else:
+                self.right.insertintotree(data)
+    def printtree(self):
+        if self.left:
+            self.left.printtree()
+        
+        print(self.data)
+        print("\n/")
+
+        if self.right:
+            self.right.printtree()
+            print("\n\\")
+            
+            
+n=Node(5)
+n.insertintotree(1)
+n.insertintotree(6)
+n.insertintotree(8)
+n.insertintotree(2)
+n.printtree()
+            
+                
+        
