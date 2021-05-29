@@ -1,0 +1,34 @@
+class Nodepost:
+    def __init__(self,data):
+        self.left=None
+        self.right=None
+        self.data=data
+    def insertintotreepost(self,data):
+        if self.data>data:
+            if self.left is None:
+                self.left=Nodepost(data)
+            
+            else:
+                self.left.insertintotreepost(data)
+        else:
+            if self.data<data:
+                if self.right is None:
+                    self.right=Nodepost(data)
+                else:
+                    self.right.insertintotreepost(data)
+    def posttraversal(self,root):
+        array=[]
+        if root:
+            array=self.posttraversal(root.left)
+            array=array+self.posttraversal(root.right)
+            array.append(root.data)
+        return array
+        
+n=Nodepost(8)
+n.insertintotreepost(5)
+n.insertintotreepost(10)
+n.insertintotreepost(4)
+n.insertintotreepost(7)
+n.insertintotreepost(3)
+n.insertintotreepost(2)
+print(n.posttraversal(n))
