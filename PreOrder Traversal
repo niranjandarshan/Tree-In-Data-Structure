@@ -1,0 +1,37 @@
+class Node:
+    def __init__(self,data):
+        self.left=None
+        self.right=None
+        self.data=data
+    def insertintopreorder(self,data):
+        if self.data>data:
+            if self.left is None:
+                self.left=Node(data)
+            else:
+                self.left.insertintopreorder(data)
+        else:
+             if self.data<data:
+                    if self.right is None:
+                        self.right =Node(data)
+                    else:
+                        self.right.insertintopreorder(data)
+    def preordertraversal(self,root):
+        array=[]
+        if root:
+            array.append(root.data)
+            array=array+self.preordertraversal(root.left)
+            array=array+self.preordertraversal(root.right)
+        return array
+    
+    
+n=Node(7)
+n.insertintopreorder(4)
+n.insertintopreorder(9)
+n.insertintopreorder(10)
+n.insertintopreorder(11)
+n.insertintopreorder(13)
+n.insertintopreorder(14)
+n.insertintopreorder(3)
+n.insertintopreorder(2)
+n.insertintopreorder(6)
+print(n.preordertraversal(n))
