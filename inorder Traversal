@@ -1,0 +1,41 @@
+class Node:
+    def __init__(self,data):
+        self.left=None
+        self.right=None
+        self.data=data
+    
+    def insertinto(self,dataitem):
+        if self.data>dataitem:
+            if self.left is None:
+                self.left=Node(dataitem)
+            else:
+                self.left.insertinto(dataitem)
+        else:
+            if self.right is None:
+                self.right=Node(dataitem)
+            else:
+                self.right.insertinto(dataitem)
+            
+
+    def traversal(self,root):
+        array=[]
+        if root:
+            array=self.traversal(root.left)
+            array.append(root.data)
+            array=array+self.traversal(root.right)
+        
+        return array
+    
+   
+                
+            
+node=Node(9)
+node.insertinto(5)
+node.insertinto(10)
+node.insertinto(6)
+node.insertinto(11)
+node.insertinto(15)
+node.insertinto(8)
+node.traversal(node)
+
+        
